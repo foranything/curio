@@ -1,254 +1,107 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "title": "test",
-        "version": "1.0.0",
-        "description": "A sample API that uses a petstore as an example to demonstrate features\nin the OpenAPI 3.0 specification",
-        "termsOfService": "http://swagger.io/terms/",
-        "contact": {
-            "name": "Swagger API Team",
-            "url": "http://swagger.io",
-            "email": "apiteam@swagger.io"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
-        }
+        "title": "TMF API",
+        "version": "1.0.0"
     },
-    "servers": [
-        {
-            "url": "http://petstore.swagger.io/api"
-        }
-    ],
     "paths": {
-        "/pets": {
+        "/v1/test": {
+            "summary": "test",
             "get": {
-                "parameters": [
-                    {
-                        "style": "form",
-                        "name": "tags",
-                        "description": "tags to filter by",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "in": "query",
-                        "required": false
-                    },
-                    {
-                        "name": "limit",
-                        "description": "maximum number of results to return",
-                        "schema": {
-                            "format": "int32",
-                            "type": "integer"
-                        },
-                        "in": "query",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "default": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        },
-                        "description": "unexpected error"
-                    },
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Pet"
-                                    }
-                                },
-                                "examples": {
-                                    "laurent_cats": {
-                                        "value": [
-                                            {
-                                                "id": 1,
-                                                "name": "Zaza",
-                                                "tag": "cat"
-                                            },
-                                            {
-                                                "id": 2,
-                                                "name": "Tigresse",
-                                                "tag": "cat"
-                                            },
-                                            {
-                                                "id": 3,
-                                                "name": "Maki",
-                                                "tag": "cat"
-                                            },
-                                            {
-                                                "id": 4,
-                                                "name": "Toufik",
-                                                "tag": "cat"
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        "description": "pet response"
-                    }
-                },
-                "operationId": "findPets",
-                "description": "Returns all pets from the system that the user has access to\n"
+                "summary": "test"
+            },
+            "put": {
+                "summary": "test"
+            }
+        },
+        "/v1/test/sub": {
+            "get": {
+                "summary": "test sub"
             },
             "post": {
                 "requestBody": {
-                    "description": "Pet to add to the store",
                     "content": {
                         "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/NewPet"
-                            },
-                            "examples": {
-                                "tigresse": {
-                                    "value": {
-                                        "name": "Tigresse",
-                                        "tag": "cat"
-                                    }
-                                }
-                            }
+
                         }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "default": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        },
-                        "description": "unexpected error"
-                    },
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Pet"
-                                },
-                                "examples": {
-                                    "tigresse": {
-                                        "value": {
-                                            "id": 2,
-                                            "name": "Tigresse",
-                                            "tag": "cat"
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "description": "pet response"
                     }
                 },
-                "operationId": "addPet",
-                "description": "Creates a new pet in the store.  Duplicates are allowed"
+                "summary": "test sub"
             }
         },
-        "/pets/{id}": {
+        "/v1/categories/templates/tree": {
+            "summary": "123123",
+            "description": "sadasdas",
             "get": {
+                "servers": [
+                    {
+                        "url": "https://dev-cubetmf-api.crscube.io/api",
+                        "description": ""
+                    }
+                ],
+                "tags": [
+                ],
                 "parameters": [
                     {
-                        "examples": {
-                            "zaza": {
-                                "value": 1
-                            }
-                        },
-                        "name": "id",
-                        "description": "ID of pet to fetch",
+                        "name": "companyKey",
+                        "description": "",
                         "schema": {
-                            "format": "int64",
                             "type": "integer"
                         },
-                        "in": "path",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "name": "templateKey",
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "in": "query",
                         "required": true
                     }
                 ],
                 "responses": {
-                    "default": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        },
-                        "description": "unexpected error"
-                    },
                     "200": {
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Pet"
-                                },
-                                "examples": {
-                                    "zaza": {
-                                        "value": {
-                                            "id": 1,
-                                            "name": "Zaza",
-                                            "tag": "cat"
-                                        }
-                                    }
+                                    "$ref": "#/components/schemas/result"
                                 }
                             }
                         },
-                        "description": "pet response"
-                    }
-                },
-                "operationId": "findPetById",
-                "description": "Returns a user based on a single ID, if the user does not have\naccess to the pet"
-            },
-            "delete": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "description": "ID of pet to delete",
-                        "schema": {
-                            "format": "int64",
-                            "type": "integer"
-                        },
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "default": {
+                        "description": "OK"
+                    },
+                    "203": {
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/ACCESS_TOKEN_EXPIRED"
                                 }
                             }
                         },
-                        "description": "unexpected error"
-                    },
-                    "204": {
-                        "description": "pet deleted"
+                        "description": "이거 200으로 보내고 있는데, curio에서 200 두 개 정의가 안 됨."
                     }
                 },
-                "operationId": "deletePet",
-                "description": "deletes a single pet based on the ID supplied"
+                "summary": "categories templates tree"
             },
             "parameters": [
                 {
-                    "name": "id",
-                    "description": "Pet identifier",
+                    "name": "templateKey",
+                    "description": "",
                     "schema": {
                         "type": "integer"
                     },
-                    "in": "path",
+                    "in": "query",
+                    "required": true
+                },
+                {
+                    "name": "companyKey",
+                    "description": "",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "query",
                     "required": true
                 }
             ]
@@ -256,51 +109,174 @@
     },
     "components": {
         "schemas": {
-            "Pet": {
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/NewPet"
-                    },
-                    {
-                        "required": [
-                            "id"
-                        ],
-                        "properties": {
-                            "id": {
-                                "format": "int64",
-                                "type": "integer"
-                            }
-                        }
-                    }
-                ]
-            },
-            "NewPet": {
-                "required": [
-                    "name"
+            "levelType": {
+                "description": "",
+                "enum": [
+                    "ALL",
+                    "PROJECT",
+                    "COUNTRY",
+                    "SITE"
                 ],
+                "type": "string"
+            },
+            "ACCESS_TOKEN_EXPIRED": {
+                "title": "Root Type for ACCESS_TOKEN_EXPIRED",
+                "description": "",
+                "type": "object",
                 "properties": {
-                    "name": {
+                    "result": {
                         "type": "string"
                     },
-                    "tag": {
+                    "newToken": {
                         "type": "string"
-                    }
-                }
-            },
-            "Error": {
-                "required": [
-                    "code",
-                    "message"
-                ],
-                "properties": {
-                    "code": {
-                        "format": "int32",
-                        "type": "integer"
                     },
                     "message": {
                         "type": "string"
+                    },
+                    "totalCount": {
+                        "type": "integer"
+                    },
+                    "error": {
+                        "type": "object",
+                        "properties": {
+                            "errorType": {
+                                "type": "string"
+                            },
+                            "errorMessage": {
+                                "type": "string"
+                            },
+                            "errorEtc": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "integer"
                     }
+                },
+                "example": {
+                    "message": "An error has occurred.",
+                    "totalCount": 0,
+                    "error": {
+                        "errorType": "ACCESS_TOKEN_EXPIRED_ERROR",
+                        "errorMessage": "세션 시간이 만료되었습니다. 다시 로그인하십시오."
+                    },
+                    "status": 4012
                 }
+            },
+            "result": {
+                "description": "",
+                "required": [
+                ],
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/treeItem"
+                        }
+                    },
+                    "newToken": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "message": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "totalCount": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                },
+                "example": {
+                    "result": [
+                        {
+                            "templateCategoryKey": 73,
+                            "categoryName": "some text",
+                            "path": "some text",
+                            "levelType": "PROJECT",
+                            "level": 1
+                        },
+                        {
+                            "templateCategoryKey": 30,
+                            "categoryName": "some text",
+                            "path": "some text",
+                            "levelType": "PROJECT",
+                            "level": 2
+                        }
+                    ],
+                    "newToken": "some text",
+                    "message": "some text",
+                    "totalCount": 2,
+                    "status": 1000
+                }
+            },
+            "treeItem": {
+                "description": "",
+                "required": [
+                    "templateCategoryKey",
+                    "categoryName",
+                    "levelType"
+                ],
+                "type": "object",
+                "properties": {
+                    "templateCategoryKey": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "categoryName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "levelType": {
+                        "$ref": "#/components/schemas/levelType",
+                        "description": ""
+                    },
+                    "level": {
+                        "type": "integer"
+                    }
+                },
+                "example": {
+                    "templateCategoryKey": 13,
+                    "categoryName": "101.10.Trial Operationsfdsf",
+                    "path": "101.Trial Management",
+                    "levelType": "PROJECT",
+                    "level": 2
+                }
+            }
+        },
+        "responses": {
+            "tree": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+
+                            }
+                        }
+                    }
+                },
+                "description": ""
+            },
+            "ACCESS_TOKEN_EXPIRED": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ACCESS_TOKEN_EXPIRED"
+                        }
+                    }
+                },
+                "description": ""
             }
         }
     }
